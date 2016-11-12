@@ -1,5 +1,3 @@
-サンプルテンプレート
-
 # プロジェクトのはじめ方
 
 ## コードディレクリを初期化する
@@ -35,7 +33,7 @@ docker build -t laravel .
 docker runコマンドで、起動します。
 
 ```
-docker run -d -v ./code:/var/www/html -n app laravel
+docker run -p 8080:80 -w /var/www/public -d -v ./www:/var/www -name webapp laravel
 ```
 
 
@@ -52,6 +50,12 @@ services:
       - 8082:80
     volumes:
       - ./admin/www:/var/www
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_DATABASE: laravel
+      DB_USERNAME: root
+      DB_PASSWORD: hogehoge
     working_dir: /var/www/public
 ```
 
@@ -72,8 +76,8 @@ docker-compose up -d
 
 ## DBをマイグレートします
 
-appという名前で起動したコンテナで、マイグレートを実行します。
+webappという名前で起動したコンテナで、マイグレートを実行します。
 
 ```
-docker exec -it app php artisan migrate
+docker exec -it webapp php artisan migrate
 ```
