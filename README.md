@@ -7,7 +7,7 @@
 coposer dockerイメージを使って、codeディレクリを初期化します。
 
 ```
-docker run --rm composer/composer create-project laravel/laravel code
+docker run --rm -v $(pwd):/app composer/composer create-project laravel/laravel code
 ```
 
 ## docker build
