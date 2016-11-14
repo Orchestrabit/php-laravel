@@ -54,9 +54,27 @@ services:
       DB_CONNECTION: mysql
       DB_HOST: db
       DB_DATABASE: laravel
-      DB_USERNAME: root
-      DB_PASSWORD: hogehoge
+      DB_USERNAME: laravel
+      DB_PASSWORD: laravel
     working_dir: /var/www/public
+  db:
+    image: mariadb:10.0.24
+    user: root
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: hogehoge
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+volumes:
+  mariadb_data:
+    external: true
+
 ```
 
 
