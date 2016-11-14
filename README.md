@@ -2,7 +2,7 @@
 
 ## コードディレクリを初期化する
 
-coposer dockerイメージを使って、wwwwディレクリを初期化します。
+coposer dockerイメージを使って、wwwディレクリを初期化します。
 
 ```
 docker run --rm -v $(pwd):/app composer/composer create-project laravel/laravel www
